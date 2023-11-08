@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///C:/Users/THOMASE/Downloads/Schedule%20Status%20Lookup.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule Status Lookup Tool</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  .container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+  }
+  h1 {
+    color: #007bff;
+    margin-bottom: 24px;
+  }
+  select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    outline: none;
+  }
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  button:hover, button:focus {
+    background-color: #0056b3;
+  }
+  p {
+    margin: 16px 0;
+  }
+  #statusOutput {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: calc(100% - 32px);
+    text-align: left;
+  }
+</style>
+<script type="text/javascript">
+// Embed the schedule-status mapping as a JavaScript object
+const scheduleStatusDict = {'Meeting - Adhoc Coaching': 'Busy > Meeting Unplanned', 'Meeting - Adhoc Meeting': 'Busy > Meeting Unplanned', 'Meeting - Annual Review': 'Meeting > One on One', 'Meeting - Coaching': 'Meeting > Coaching ', 'Meeting - Probation Review': 'Meeting Probation Review', 'Break - 10 Minutes': 'Break', 'Floor Walking Support': 'Busy > Floor Walking', 'Live Chat': 'Busy > Live Chat', 'Meal - 30 minutes': 'Meal', 'Meeting': 'Busy > Meeting', 'MyLearning': 'Training > My Learning', 'New Recruit Training': "Don't log on - Offline", 'Off Queue - Activities': 'Busy > Activities', 'On Queue': 'Available', 'On Queue (but you need time away for a personal reason)': 'Away > Personal', "On queue (but your system isn't working)": 'Away > System', 'Team Leader Relief': 'Busy > Specialist Duties', 'Team Meeting': 'Meeting > Team Meeting', 'Training - Adhoc': 'Trianing > My Learning', 'Upskill Trianing': "Don't log on - Offline", 'Webforms': 'Busy > Activities', 'Nesting': 'Logout or Away', 'Secondment': 'Logout or Away'};
+
+function getStatus() {
+    // Get the user selected option from the drop-down
+    var userSelection = document.getElementById('scheduleSelect').value;
+    // Use the selection to get the corresponding status from the dictionary
+    var status = scheduleStatusDict[userSelection] || "Schedule not found";
+    // Display the result in the span with id 'statusOutput'
+    document.getElementById('statusOutput').textContent = status;
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <h1>Schedule Status Lookup Tool</h1>
+  <p><strong>Instructions:</strong><br> Select your schedule item from the dropdown menu. Click "Get Status Code" to see the corresponding status.</p>
+  <select id="scheduleSelect">
+  <option value="">--Select your schedule--</option>
+  <option value="Meeting - Adhoc Coaching">Meeting - Adhoc Coaching</option><option value="Meeting - Adhoc Meeting">Meeting - Adhoc Meeting</option><option value="Meeting - Annual Review">Meeting - Annual Review</option><option value="Meeting - Coaching">Meeting - Coaching</option><option value="Meeting - Probation Review">Meeting - Probation Review</option><option value="Break - 10 Minutes">Break - 10 Minutes</option><option value="Floor Walking Support">Floor Walking Support</option><option value="Live Chat">Live Chat</option><option value="Meal - 30 minutes">Meal - 30 minutes</option><option value="Meeting">Meeting</option><option value="MyLearning">MyLearning</option><option value="New Recruit Training">New Recruit Training</option><option value="Off Queue - Activities">Off Queue - Activities</option><option value="On Queue">On Queue</option><option value="On Queue (but you need time away for a personal reason)">On Queue (but you need time away for a personal reason)</option><option value="On queue (but your system isn&#39;t working)">On queue (but your system isn't working)</option><option value="Team Leader Relief">Team Leader Relief</option><option value="Team Meeting">Team Meeting</option><option value="Training - Adhoc">Training - Adhoc</option><option value="Upskill Trianing">Upskill Trianing</option><option value="Webforms">Webforms</option><option value="Nesting">Nesting</option><option value="Secondment">Secondment</option>
+  </select>
+  <button onclick="getStatus()">Get Status Code</button>
+  <p><strong>Status Code:</strong></p>
+  <div id="statusOutput">Meeting &gt; Coaching </div>
+</div>
+
+
+</body></html>
